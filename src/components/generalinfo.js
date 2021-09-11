@@ -17,6 +17,7 @@ class GeneralInfo extends Component {
         this.saveLastName = this.saveLastName.bind(this);
         this.saveEmail = this.saveEmail.bind(this);
         this.savePhoneNumber = this.savePhoneNumber.bind(this);
+        this.updateInfo =this.updateInfo.bind(this);
     }
 
     saveFirstName(event) {
@@ -53,7 +54,8 @@ class GeneralInfo extends Component {
                 <h2>{this.state.phoneNumber}</h2>
             </div>
         );
-        ReactDOM.render(currentInfo, document.getElementById('generalInfoContainer'))
+        alert();
+        //ReactDOM.render(currentInfo, document.getElementById('generalInfoContainer'))
             
         event.preventDefault();
     }
@@ -63,19 +65,19 @@ class GeneralInfo extends Component {
                 <form onSubmit={this.updateInfo}>
                     <label>
                         First Name:
-                        <input type="text" onChange={this.saveFirstName}/>
+                        <input type="text" value= {this.state.firstNameInput } onChange={this.saveFirstName}/>
                     </label>
                     <label>
                         Last Name: 
-                        <input type="text" onChange={this.saveLastName}/>
+                        <input type="text" value={this.state.lastNameInput} onChange={this.saveLastName}/>
                     </label>
                     <label>
                         Email:
-                        <input type="email" onChange={this.saveEmail}/>
+                        <input type="email" value = {this.state.emailInput} onChange={this.saveEmail}/>
                     </label>
                     <label>
                         Phone Number:
-                        <input type="tel" onChange={this.savePhoneNumber}/>
+                        <input type="tel" value = {this.state.phoneNumberInput}onChange={this.savePhoneNumber}/>
                     </label>
                     <input type="submit" value="submit" />
                 
