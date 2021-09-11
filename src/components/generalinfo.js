@@ -46,6 +46,8 @@ class GeneralInfo extends Component {
         this.setState({phoneNumber: phoneNumberInput});
         // Trying to add a function to render the information now stored in the compoenent
         
+
+        //THIS IS WHAT i AM TRYING TO GET TO RENDER ON SUBMIT
         const currentInfo = (
             <div>
                 <h2>{this.state.firstName}</h2>
@@ -59,6 +61,8 @@ class GeneralInfo extends Component {
             
         event.preventDefault();
     }
+
+    //THIS IS THE INITIAL RENDER THAT NEEDS TO BE SWAPPED WITH THE UPDATED INFO ON SUBMISSION
     render() {
         return (
             <div id='generalInfoContainer'>
