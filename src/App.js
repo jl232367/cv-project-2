@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import general from './components/generalinfo'
 import './App.css';
 import GeneralInfo from './components/generalinfo';
+import EducationInfo from './components/educationinfo';
 
 class App extends Component {
   constructor(props) {
@@ -12,7 +13,10 @@ class App extends Component {
 
   render() {
     return (
+     <div>
       <GeneralInfo/>
+      <EducationInfo/>
+     </div>
     )
   }
 }

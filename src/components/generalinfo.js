@@ -22,6 +22,8 @@ class GeneralInfo extends Component {
         this.savePhoneNumber = this.savePhoneNumber.bind(this);
         this.updateInfo = this.updateInfo.bind(this);
         this.renderCurrentInfo = this.renderCurrentInfo.bind(this);
+        this.unsubmitFormForEdit = this.unsubmitFormForEdit.bind(this);
+        this.renderForm = this.renderForm.bind(this);
     }
 
     saveFirstName(event) {
@@ -55,22 +57,13 @@ class GeneralInfo extends Component {
         event.preventDefault();
     }
 
-    renderCurrentInfo() {
-        return (
-            <div>
-                <h2>{this.state.firstName}</h2>
-                <h2>{this.state.lastName}</h2>
-                <h2>{this.state.email}</h2>
-                <h2>{this.state.phoneNumber}</h2>
-            </div>
-        );
+    unsubmitFormForEdit() {
+        this.setState({ formSubmitted: false });
+        
     }
 
-    //THIS IS THE INITIAL RENDER THAT NEEDS TO BE SWAPPED WITH THE UPDATED INFO ON SUBMISSION
-    render() {
-        const { formSubmitted } = this.state;
-
-        return (!formSubmitted ? (
+    renderForm() {
+        return (
             <div id="generalInfoContainer">
                 <form onSubmit={this.updateInfo}>
                     <label>
@@ -105,9 +98,35 @@ class GeneralInfo extends Component {
                             onChange={this.savePhoneNumber}
                         />
                     </label>
+                    <button onClick = {this.unsubmitFormForEdit}>
+                        Cancel
+                    </button>
                     <input type="submit" value="submit" />
                 </form>
             </div>
+        );
+    }
+
+    renderCurrentInfo() {
+        return (
+            <div>
+                <h2>{this.state.firstName}</h2>
+                <h2>{this.state.lastName}</h2>
+                <h2>{this.state.email}</h2>
+                <h2>{this.state.phoneNumber}</h2>
+                <button onClick ={ this.unsubmitFormForEdit } >
+                    Edit
+                </button>
+            </div>
+        );
+    }
+
+    //THIS IS THE INITIAL RENDER THAT NEEDS TO BE SWAPPED WITH THE UPDATED INFO ON SUBMISSION
+    render() {
+        const { formSubmitted } = this.state;
+
+        return (!formSubmitted ? (
+            this.renderForm()
         ) : (
             this.renderCurrentInfo()
         ));
