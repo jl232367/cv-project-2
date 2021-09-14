@@ -27,7 +27,14 @@ class EducationInfo extends Component {
         this.updateInfo = this.updateInfo.bind(this);
         this.renderEducationInfo = this.renderEducationInfo.bind(this);
         this.changeFormSubmittedStatus = this.changeFormSubmittedStatus.bind(this);
+        this.unsubmitFormForEdit = this.unsubmitFormForEdit.bind(this);
     }
+
+unsubmitFormForEdit() {
+        this.setState({ formSubmitted: false });
+        
+    }
+
 changeFormSubmittedStatus () {
     this.setstate({formSubmitted: false});
 }
@@ -41,7 +48,7 @@ renderEducationInfo() {
             <h2>{this.state.major}</h2>
             <h2>{this.state.collegeGraduationDate}</h2>
             <h2>{this.state.anyFurtherEducation}</h2>
-            <button onClick = {this.changeFormSubmittedStatus}>Edit</button>
+            <button onClick = {this.unsubmitFormForEdit}>Edit</button>
         </div>
         
     );
@@ -59,13 +66,13 @@ updateInfo(event) {
     event.preventDefault();
     this.setState ({
         formSubmitted: true, 
-        highSchoolName: this.tempHighSchoolName,
-        focusOfStudy: this.tempFocusOfStudy,
-        graduationDate: this.tempGraduationDate,
-        collegeName: this.tempCollegeGraduationDate,
-        major: this.tempMajor,
-        collegeGraduationDate: this.tempCollegeGraduationDate,
-        anyFurtherEducation: this.tempAnyFurtherEducation
+        highSchoolName: this.state.tempHighSchoolName,
+        focusOfStudy: this.state.tempFocusOfStudy,
+        graduationDate: this.state.tempGraduationDate,
+        collegeName: this.state.tempCollegeGraduationDate,
+        major: this.state.tempMajor,
+        collegeGraduationDate: this.state.tempCollegeGraduationDate,
+        anyFurtherEducation: this.state.tempAnyFurtherEducation
        
     });
 }
@@ -138,7 +145,7 @@ renderForm() {
                 onChange = {this.handleInputChange}
                 />
             </label>
-            <button onClick = {this.changeFormSubmittedStatus}>
+            <button onClick = {this.unsubmitFormForEdit}>
                         Cancel
                     </button>
             <input type="submit" value="submit" />
